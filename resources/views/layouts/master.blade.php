@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        {{-- Favicon --}}
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
