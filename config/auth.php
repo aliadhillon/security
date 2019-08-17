@@ -31,6 +31,8 @@ return [
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
+    | By Ali A. Dhillon: Guards define how users are authenticated for each request
+    |
     | Supported: "session", "token"
     |
     */
@@ -60,6 +62,8 @@ return [
     | If you have multiple user tables or models you may configure multiple
     | sources which represent each model / table. These sources may then
     | be assigned to any extra authentication guards you have defined.
+    |
+    | By Ali A. Dhillon: Providers define how users are retrieved from your persistent storage
     |
     | Supported: "database", "eloquent"
     |
