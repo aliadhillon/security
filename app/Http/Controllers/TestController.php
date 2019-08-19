@@ -15,13 +15,6 @@ class TestController extends Controller
      */
     public function __invoke()
     {
-        $data = [
-            'name' => 'Something',
-            'email' => 'email3@test.com',
-            'password' => Hash::make('passoword')
-        ];
-        $user = new User($data);
-        dd($user->create($data)); 
-        return view('test')->with('msg', $user->create($data) ? 'Saved':'Not');
+        return view('test');
     }
 }
