@@ -4,5 +4,4 @@
 
 @section('content')
     <p>This is just a test</p>
-    {{ __(__('messages.error'), ['name' => 'Random']) }}
 @endsection
