@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Hash;
+
 class TestController extends Controller
 {
     /**
@@ -12,6 +15,13 @@ class TestController extends Controller
      */
     public function __invoke()
     {
-        return view('test');
+        $data = [
+            'name' => 'Something',
+            'email' => 'email3@test.com',
+            'password' => Hash::make('passoword')
+        ];
+        $user = new User($data);
+        dd($user->create($data)); 
+        return view('test')->with('msg', $user->create($data) ? 'Saved':'Not');
     }
 }

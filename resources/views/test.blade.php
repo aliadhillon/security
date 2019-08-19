@@ -4,4 +4,5 @@
 
 @section('content')
     <p>This is just a test</p>
+    {{ $msg ?? '' }}
 @endsection
