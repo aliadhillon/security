@@ -6,6 +6,7 @@
         <p>Name: <strong>{{ $name }}</strong></p>
         <p>Email: <strong>{{ $email }}</strong></p>
         <p>Created On: <strong>{{ $created }}</strong></p>
+        <p>Post(s): <strong>{{ $posts }}</strong></p>
         <br>
         <form action="{{ route('destroy') }}" method="post">
             @csrf

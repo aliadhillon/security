@@ -7,6 +7,7 @@
         @foreach ($posts as $post)
             <div class="container">
                 <h3>{{ $post->title }}</h3>
+                <span>By: {{ $post->user->name }}</span>
                 <hr>
                 <p>{{ $post->body }}</p>
             </div>
