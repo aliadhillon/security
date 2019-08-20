@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Auth::user()->posts;
         return view('posts.index')->withPosts($posts);
     }
 
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show')->with('post', $post);
+        return view('posts.show')->withPost($post);
     }
 
     /**
@@ -69,7 +69,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return response('Edit post: ' . $post->title);
+        return view('posts.edit')->withPost($post);
     }
 
     /**
@@ -79,9 +79,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostStoreRequest $request, Post $post)
     {
-        dd($request);
+        $validated = $request->validated();
+        $post->update($validated);
+
+        return redirect()->route('posts.show', ['post' => $post])->withMsg('Post Updated:' . $post->title);
     }
 
     /**

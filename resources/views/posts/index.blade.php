@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @include('includes.success')
-        <h2>Posts</h2>
+        <h2 class="h2">Posts</h2>
         <hr>
         @if ($posts->isNotEmpty())
             <div class="list-group">

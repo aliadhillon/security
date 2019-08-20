@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Profile</h2>
+        <h2 class="h2">Profile</h2>
         <p>Name: <strong>{{ $name }}</strong></p>
         <p>Email: <strong>{{ $email }}</strong></p>
         <p>Created On: <strong>{{ $created }}</strong></p>

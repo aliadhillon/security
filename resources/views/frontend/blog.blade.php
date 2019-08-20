@@ -6,8 +6,9 @@
     @if ($posts->isNotEmpty())
         @foreach ($posts as $post)
             <div class="container">
-                <h3>{{ $post->title }}</h3>
-                <span>By: {{ $post->user->name }}</span>
+                <h3 class="h3">{{ $post->title }}</h3>
+                <span class="small">By: <strong>{{ $post->user->name }}</strong></span>
+                <span class="float-right small">Published On: <strong>{{ $post->created_at->toDateString() }}</strong></span>
                 <hr>
                 <p>{{ $post->body }}</p>
             </div>

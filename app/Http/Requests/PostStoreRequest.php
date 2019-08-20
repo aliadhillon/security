@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class PostStoreRequest extends FormRequest
 {
@@ -25,7 +26,12 @@ class PostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:256', 'unique:posts'],
+            'title' => [
+                'required',
+                'string',
+                'max:256',
+                Rule::unique('posts')->ignore(request()->post)
+            ],
             'body' => ['required']
         ];
     }

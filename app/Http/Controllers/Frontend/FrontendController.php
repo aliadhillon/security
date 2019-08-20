@@ -23,7 +23,7 @@ class FrontendController extends Controller
 
     public function blog()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view('frontend.blog')->with('posts', $posts);
     }
     

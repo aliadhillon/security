@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h2>{{ $post->title }}</h2>
+        @include('includes.success')
+        <h2 class="h2">{{ $post->title }}</h2>
         <hr>
         <p>{{ $post->body }}</p>
         <br>
