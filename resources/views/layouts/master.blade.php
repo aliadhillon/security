@@ -39,12 +39,13 @@
                 <div class="links">
                     <a href="{{ route('welcome') }}">Welcome</a>
                     <a href="{{ route('test') }}">Test</a>
+                    <a href="{{ route('blog') }}">Blog</a>
                 </div>
             </div>
         </div>
         <div class="py-4">
             <div class="container">
-                <h2>@yield('title')</h2>
+                <h2 class="text-center">@yield('title')</h2>
                 @yield('content')
             </div>
             

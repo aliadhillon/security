@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
+Route::namespace('Frontend')->group(function(){
+    Route::get('/', 'FrontendController@welcome')->name('welcome');
+    Route::get('/blog', 'FrontendController@blog')->name('blog');
+});
 
 Auth::routes();
 
@@ -24,3 +26,5 @@ Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::delete('/profile', 'HomeController@destroy')->name('destroy');
 
 Route::get('/test', 'TestController')->name('test');
+
+// Route::redirect('/here', 'https://www.google.com.pk', 301);

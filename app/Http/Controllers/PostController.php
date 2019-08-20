@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response('This is the index of posts');
+        $posts = Post::all();
+        return view('posts.index')->withPosts($posts);
     }
 
     /**
@@ -46,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return response('Post id: ' . $post);
+        return view('posts.show')->with('post', $post);
     }
 
     /**
@@ -57,7 +63,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return response('This is the edit method of posts');
+        return response('Edit post: ' . $post->title);
     }
 
     /**

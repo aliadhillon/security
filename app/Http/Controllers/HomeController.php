@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.home');
     }
 
     /**
@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $created = Carbon::parse($user->created_at)->toDateString();
-        return view('profile')->with(['name' => $user->name, 'email' => $user->email, 'created' => $created]);
+        return view('admin.profile')->with(['name' => $user->name, 'email' => $user->email, 'created' => $created]);
     }
 
     /**

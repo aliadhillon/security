@@ -17,6 +17,6 @@ class TestController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('test');
+        return view('frontend.test');
     }
 }
