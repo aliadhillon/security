@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label for="body">Body</label>
-                <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="3" placeholder="Enter body here">{{ old('body') }}</textarea>
+                <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="10" placeholder="Enter body here">{{ old('body') }}</textarea>
                 @error('body')
                 <div class="invalid-feedback">
                     {{ $message }}
