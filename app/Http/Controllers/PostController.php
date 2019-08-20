@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
 use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -30,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return response('This is the create method of posts');
+        return view('posts.create');
     }
 
     /**
@@ -39,9 +40,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        dd($request);
+        $validated = $request->validated();
+        $validated['user_id'] = Auth::id();
+        
+        $post = Post::create($validated);
+
+        return redirect()->route('posts.index')->with('msg', 'Post Created:' . $post->title);
     }
 
     /**
@@ -86,6 +92,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        dd($post);
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('msg', 'Post Deleted:' . $post->title);
     }
 }

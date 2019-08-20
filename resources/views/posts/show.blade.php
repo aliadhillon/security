@@ -6,6 +6,14 @@
         <hr>
         <p>{{ $post->body }}</p>
         <br>
-        <a class="btn btn-info" href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit</a>
+    </div>
+    <div class="container">
+        <a class="btn btn-info" href="{{ route('posts.edit', ['post' => $post]) }}">Edit Post</a>
+        <br><br>
+        <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete Post</button>
+        </form>
     </div>
 @endsection

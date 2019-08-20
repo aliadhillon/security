@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('includes.success')
         <h2>Posts</h2>
         <hr>
         @if ($posts->isNotEmpty())
