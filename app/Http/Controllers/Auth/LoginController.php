@@ -38,19 +38,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * It will handle the autehnticate request.
-     */
-
-     public function authenticate(Request $request)
-     {
-         $credentials = $request->only('email', 'password');
-
-         dd($credentials);
-         if (Auth::attempt($credentials)) {
-
-            return redirect()->intended('/home');
-         }
-     }
 }
