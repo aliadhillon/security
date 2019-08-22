@@ -19,11 +19,15 @@ Route::namespace('Frontend')->group(function(){
 
 Auth::routes();
 
+Route::namespace('Auth')->group(function () {
+    Route::get('/profile', 'UserController@profile')->name('profile');
+    Route::delete('/profile', 'UserController@destroy')->name('destroy');
+});
+
 Route::resource('posts', 'PostController');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'HomeController@profile')->name('profile');
-Route::delete('/profile', 'HomeController@destroy')->name('destroy');
+
 
 Route::get('/test', 'TestController')->name('test');
 
