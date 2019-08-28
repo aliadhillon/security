@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You are logged in!</p>
+                    <p>Welcome, <strong>{{ $name }}</strong></p>
                 </div>
             </div>
         </div>

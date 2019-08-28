@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Security</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -32,19 +32,20 @@
             @endif
 
             <div class="content container">
-                <div class="title m-b-md">
-                    Laravel Security
+                <div class="m-b-md">
+                    <h1 class="display-3">Laravel Security</h1> 
                 </div>
                                 
                 <div class="links">
                     <a href="{{ route('welcome') }}">Welcome</a>
+                    <a href="{{ route('blog') }}">Blog</a>
                     <a href="{{ route('test') }}">Test</a>
                 </div>
             </div>
         </div>
         <div class="py-4">
             <div class="container">
-                <h2>@yield('title')</h2>
+                <h2 class="text-center h2">@yield('title')</h2>
                 @yield('content')
             </div>
             

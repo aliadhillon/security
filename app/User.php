@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * This will return the posts with this users owns
+     * @param void
+     * @return Model
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
