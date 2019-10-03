@@ -13,28 +13,21 @@ class AdminLoginController extends Controller
 {
     use AuthenticatesUsers;
 
+    protected $redirectTo = 'admin';
 
     public function __construct()
     {
-        $this->middleware('auth:admin')->except(['logout', 'showLoginForm', 'register']);
+        $this->middleware('guest:admin')->except('logout');
     }
 
-    public function register()
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
     {
-        $admin = Admin::create([
-            'name' => 'Admin',
-            'email' => 'admin@security.test',
-            'password' => Hash::make('password')
-        ]);
-
-        if ($admin) {
-            Auth::guard('admin')->login($admin);
-
-            return redirect()->route('admin.dashboard');    
-        }
-
-        return redirect()->route('welcome');
-        
+        return Auth::guard('admin');
     }
 
     public function showLoginForm()
@@ -42,23 +35,23 @@ class AdminLoginController extends Controller
         return view('auth.admin_login');
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required']
+    //     ]);
+    //     dd(Auth::attempt(['email' => 'ali.dhllon102@gmail.com', 'password' => 'password']));
+    //     dd($request->all());
+    //     if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+    //        dd(Auth::guard('admin')->check());
+    //         return redirect()->intended(route('admin.dashboard'));
+    //     }
 
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
-            return redirect()->intended(route('admin.dashboard'));
-        }
-
-        return back()
-            ->withInput($request->only('email', 'remember'))
-            ->withErrors($this->username(), __('auth.failed'));
-    }
+    //     return back()
+    //         ->withInput($request->only('email', 'remember'))
+    //         ->withErrors($this->username(), __('auth.failed'));
+    // }
 
 
     public function logout()
@@ -66,6 +59,17 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('welcome');
     }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'email';
+    }
+
 
 
 }

@@ -30,7 +30,7 @@ class PostStoreRequest extends FormRequest
                 'required',
                 'string',
                 'max:256',
-                Rule::unique('posts')->ignore(request()->post)
+                Rule::unique('posts')->ignore($this->post)
             ],
             'body' => ['required']
         ];

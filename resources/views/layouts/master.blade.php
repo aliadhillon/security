@@ -33,13 +33,12 @@
 
             <div class="content container">
                 <div class="m-b-md">
-                    <h1 class="display-3">Laravel Security</h1> 
+                    <h1 class="display-3">Laravel Security</h1>
                 </div>
-                                
+
                 <div class="links">
                     <a href="{{ route('welcome') }}">Welcome</a>
                     <a href="{{ route('blog') }}">Blog</a>
-                    <a href="{{ route('test') }}">Test</a>
                 </div>
             </div>
         </div>
@@ -48,7 +47,7 @@
                 <h2 class="text-center h2">@yield('title')</h2>
                 @yield('content')
             </div>
-            
+
         </div>
     </body>
 </html>

@@ -31,7 +31,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-    Route::get('/register', 'Auth\AdminLoginController@register')->name('admin.register');
+    Route::get('/register', 'Auth\AdminRegisterController@register')->name('admin.register');
 });
 
 Route::resource('posts', 'PostController');
@@ -41,8 +41,3 @@ Route::resource('posts', 'PostController');
 Route::get('admin', 'AdminController@index')->name('admin.dashboard');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/test', 'TestController')->name('test');
-
-// Route::redirect('/here', 'https://www.google.com.pk', 301);
